@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h2>Welcome to THUNDER'S PAGE, {{ username }}!</h2>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.first.label }}<br>
+        {{ form.first(size=30) }}<br><br>
+        {{ form.last.label }}<br>
+        {{ form.last(size=30) }}<br><br>
+        {{ form.email.label }}<br>
+        {{ form.email(size=30) }}<br><br>
+        {{ form.number.label }}<br>
+        {{ form.number(size=30) }}<br><br>
+        {{ form.remarks.label }}<br>
+        {{ form.remarks(rows=4, cols=30) }}<br><br>
+        {{ form.submit() }}
+    </form>
+
+    <br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul style="color: green;">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
